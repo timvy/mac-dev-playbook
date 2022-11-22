@@ -34,6 +34,10 @@
       when: configure_terminal
       tags: ['terminal']
 
+    - import_tasks: tasks/osx_defaults.yml
+      when: configure_osx_defaults
+      tags: ['osx_defaults']
+
     - import_tasks: tasks/osx.yml
       when: configure_osx
       tags: ['osx']

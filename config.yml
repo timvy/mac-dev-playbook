@@ -3,7 +3,8 @@ downloads: ~/.ansible-downloads/
 
 configure_dotfiles: false
 configure_terminal: false
-configure_osx: true
+configure_osx: false
+configure_osx_defaults: true
 
 # Set to 'true' to configure the Dock via dockutil.
 configure_dock: false
@@ -114,3 +115,58 @@ sublime_package_control:
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
+
+osx_defaults_settings:
+  - domain: NSGlobalDomain
+    keys:
+      - { key: AppleShowAllExtensions, type: bool, value: true } # show file extensions in Finder
+      - { key: NSNavPanelExpandedStateForSaveMode, type: bool, value: true } # # Expand save panel by default
+      - { key: PMPrintingExpandedStateForPrint, type: bool, value: true } # # Expand print panel by default
+      - { key: NSAutomaticQuoteSubstitutionEnabled, type: bool, value: false } # Disable smart quotes
+      - { key: NSAutomaticDashSubstitutionEnabled, type: bool, value: false } # Disable smart dashes
+      - { key: NSAutomaticSpellingCorrectionEnabled, type: bool, value: false } # Disable auto-correct
+  - domain: com.apple.dock
+    keys:
+      - { key: autohide, type: bool, value: true } # autohide
+      - { key: showhidden, type: bool, value: true } # autohide
+      - { key: expose-animation-duration, type: float, value: 0.15 } # autohide
+  - domain: com.apple.AppleMultitouchTrackpad
+    keys:
+      - { key: FirstClickThreshold, type: int, value: 0 } # Trackpad: Haptic feedback light
+      - { key: ActuationStrength, type: int, value: 0 } # Trackpad: Haptic feedback
+  - domain: com.apple.finder
+    keys:
+      - { key: AppleShowAllFiles, type: bool, value: true } # show hidden files
+      - { key: ShowPathbar, type: bool, value: true } # show full path in the bottom of Finder windows
+      - { key: FXPreferredViewStyle, type: string, value: Nlsv } # show full path in the bottom of Finder windows
+      - { key: _FXSortFoldersFirst, type: bool, value: true } # sort folders on top
+      - { key: FXDefaultSearchScope, type: string, value: SCcf } # start search in current folder
+      - { key: FXEnableExtensionChangeWarning, type: bool, value: false } # disable warning when changing extension
+      - { key: NSDocumentSaveNewDocumentsToCloud, type: bool, value: false } # save to disk by default
+      - { key: ShowStatusBar, type: bool, value: true } # show status bar
+      - { key: QLEnableTextSelection, type: bool, value: true } # allow text selection in Quick Look
+  - domain: com.apple.Music
+    keys:
+      - { key: userWantsPlaybackNotifications, type: bool, value: false } # don't show notifications when playing new song
+  - domain: com.apple.safari
+    keys:
+      - { key: ShowFullURLInSmartSearchField, type: bool, value: true } # show full url
+      - { key: IncludeDevelopMenu, type: bool, value: true } # Enable the Develop menu
+      - { key: WebKitDeveloperExtrasEnabledPreferenceKey, type: bool, value: true } # Enable the Develop menu
+      - { key: com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled, type: bool, value: true } # Enable the Develop menu
+  - domain: com.apple.TimeMachine
+    keys:
+      - { key: DoNotOfferNewDisksForBackup, type: bool, value: true } # don't take backups on new disks
+  - domain: com.apple.desktopservices
+    keys:
+      - { key: DSDontWriteNetworkStores, type: bool, value: true } # don't create .DS_Store files on network volumes
+  - domain: com.apple.universalaccess
+    keys:
+      - { key: reduceTransparency, type: bool, value: true } # Enable the 'reduce transparency' option
+  - domain: com.apple.mail
+    keys:
+      - { key: AddressesIncludeNameOnPasteboard, type: bool, value: false }
+
+plist_commands:
+  - '"Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist'
+  - '"Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist'

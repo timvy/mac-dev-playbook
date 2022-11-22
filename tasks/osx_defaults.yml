@@ -1,0 +1,14 @@
+---
+- name: Apply global settings
+  community.general.osx_defaults:
+    domain: "{{ item.0.domain }}"
+    key: "{{ item.1.key }}"
+    type: "{{ item.1.type }}"
+    value: "{{ item.1.value }}"
+  with_subelements:
+    - "{{osx_defaults_settings}}"
+    - keys
+
+- name: Show the ~/Library folder
+  ansible.builtin.command: "chflags nohidden ~/Library"
+
