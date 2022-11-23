@@ -1,0 +1,13 @@
+---
+- name: Generate array
+  ansible.builtin.set_fact:
+    dock_persistent_apps_array: "{{ dock_persistent_apps_array|default([]) + ['delete ' ~ item] }}"
+  loop: "{{ dock_persistent_apps }}"
+
+- debug: var=dock_persistent_apps_array
+# - name: Add persistent apps to Dock
+#   community.general.osx_defaults:
+#     domain: com.apple.dock
+#     key: persistent-apps
+#     type: array
+#     value: "{{ dock_persistent_apps }}"
