@@ -9,13 +9,5 @@
     - "{{osx_defaults_settings}}"
     - keys
 
-- name: Add persistent apps to Dock
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: persistent-apps
-    type: array
-    value: "{{ dock_persistent-apps }}"
-
 - name: Show the ~/Library folder
   ansible.builtin.command: "chflags nohidden ~/Library"
-

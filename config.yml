@@ -173,9 +173,5 @@ plist_commands:
   - '"Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist'
   - '"Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist'
 
-dock_persistent-apps:
-  - tile-type: file-tile
-    tile-data:
-      - file-type: 1
-        label: Safari
-        url: /Applications/Safari.app
+dock_persistent_apps:
+

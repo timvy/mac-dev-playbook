@@ -1,13 +1,17 @@
 ---
+- name: Set variables for array
+  ansible.builtin.set_fact:
+    dock_app_pretext: "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>"
+    dock_app_postext: "</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+
 - name: Generate array
   ansible.builtin.set_fact:
-    dock_persistent_apps_array: "{{ dock_persistent_apps_array|default([]) + ['delete ' ~ item] }}"
+    dock_persistent_apps_array: "{{ dock_persistent_apps_array|default([]) + [dock_app_pretext ~ item ~ dock_app_postext] }}"
   loop: "{{ dock_persistent_apps }}"
 
-- debug: var=dock_persistent_apps_array
-# - name: Add persistent apps to Dock
-#   community.general.osx_defaults:
-#     domain: com.apple.dock
-#     key: persistent-apps
-#     type: array
-#     value: "{{ dock_persistent_apps }}"
+- name: Add persistent apps to Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: persistent-apps
+    type: array
+    value: "{{ dock_persistent_apps_array }}"
