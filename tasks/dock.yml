@@ -15,3 +15,6 @@
     key: persistent-apps
     type: array
     value: "{{ dock_persistent_apps_array }}"
+
+- name: Restart Dock
+  ansible.builtin.command: killall Dock
