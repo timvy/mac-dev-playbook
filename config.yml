@@ -131,7 +131,6 @@ osx_defaults_settings:
       - { key: autohide, type: bool, value: true } # autohide
       - { key: showhidden, type: bool, value: true } # autohide
       - { key: expose-animation-duration, type: float, value: 0.15 } # autohide
-      - { key: persistent-apps, type: array, value: ["/Applications/Safari.app","/Applications/Messages.app","/Applications/Bitwarden.app"]}
   - domain: com.apple.AppleMultitouchTrackpad
     keys:
       - { key: FirstClickThreshold, type: int, value: 0 } # Trackpad: Haptic feedback light
@@ -172,3 +171,10 @@ osx_defaults_settings:
 plist_commands:
   - '"Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist'
   - '"Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist'
+
+dock_persistent-apps:
+  - tile-type: file-tile
+    tile-data:
+      - file-type: 1
+        label: Safari
+        url: /Applications/Safari.app
