@@ -60,6 +60,7 @@ homebrew_cask_apps:
   - bettermouse
   - bitwarden
   - aws-vpn-client
+  - nextcloud
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps:
@@ -130,6 +131,7 @@ osx_defaults_settings:
       - { key: autohide, type: bool, value: true } # autohide
       - { key: showhidden, type: bool, value: true } # autohide
       - { key: expose-animation-duration, type: float, value: 0.15 } # autohide
+      - { key: persistent-apps, type: array, value: ["/Applications/Safari.app","/Applications/Messages.app"]}
   - domain: com.apple.AppleMultitouchTrackpad
     keys:
       - { key: FirstClickThreshold, type: int, value: 0 } # Trackpad: Haptic feedback light
