@@ -131,7 +131,7 @@ osx_defaults_settings:
       - { key: autohide, type: bool, value: true } # autohide
       - { key: showhidden, type: bool, value: true } # autohide
       - { key: expose-animation-duration, type: float, value: 0.15 } # autohide
-      - { key: persistent-apps, type: array, value: ["/Applications/Safari.app","/Applications/Messages.app"]}
+      - { key: persistent-apps, type: array, value: ["/Applications/Safari.app","/Applications/Messages.app","/Applications/Bitwarden.app"]}
   - domain: com.apple.AppleMultitouchTrackpad
     keys:
       - { key: FirstClickThreshold, type: int, value: 0 } # Trackpad: Haptic feedback light
